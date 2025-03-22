@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Currency Converter</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      /* Use url_for('static', ...) since 'artifact' is acting as static */
+      background: url("{{ url_for('static', filename=image_path) }}") no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin: 100px auto;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 10px 15px;
+      background: #4CAF50;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .note {
+      margin-top: 20px;
+      font-style: italic;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Currency Converter</h1>
+    <form action="/convert" method="POST">
+      <label for="input_currency">Input Currency:</label>
+      <input type="text" id="input_currency" name="input_currency" value="USD">
+
+      <label for="target_currency">Target Currency:</label>
+      <input type="text" id="target_currency" name="target_currency" value="EUR">
+
+      <label for="amount">Amount:</label>
+      <input type="text" id="amount" name="amount" value="100">
+
+      <button type="submit">Convert</button>
+    </form>
+    <p class="note">Supported codes: USD, EUR, GBP, JPY, INR</p>
+  </div>
+</body>
+</html>
